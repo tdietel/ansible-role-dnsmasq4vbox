@@ -3,6 +3,10 @@ dnsmasq4vbox
 
 Set up dnsmasq to serve a host-only network for VirtualBox.
 
+The general idea is to replace the DHCP server in VirtualBox to provide a better user experience: an immediate benefit is that dnsmasq also provides DNS, where the host records are populated automatically, based on the DHCP leases. This means that computers in the host-only network can immediately be reached by their name (if dnsmasq is used on the host to resolve name queries). 
+
+Further goodies include statically assigned IPs, the possibility to implement a decent TFTP server, flexible configuration of locally resolved DNS queries etc.
+
 Requirements
 ------------
 
