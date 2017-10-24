@@ -13,11 +13,11 @@ requests.
 Role Variables
 --------------
 
-* *dnsmasq_conf_file*: location of the configuration file [default:
+* **dnsmasq_conf_file**: location of the configuration file [default:
 /usr/local/etc/dnsmasq.conf] 
-* *dnsmasq_interfaces*: list of interfaces to listen on [default: vboxnet0]
-* *dnsmasq_dhcp_range*: range of dynamic DHCP addresses [default: 192.168.100.101,192.168.100.150,255.255.255.0,12h]
-* *dnsmasq_domain*: domainname for local host names [default: vboxnet]
+* **dnsmasq_interfaces**: list of interfaces to listen on [default: vboxnet0]
+* **dnsmasq_dhcp_range**: range of dynamic DHCP addresses [default: 192.168.100.101,192.168.100.150,255.255.255.0,12h]
+* **dnsmasq_domain**: domainname for local host names [default: vboxnet]
 
 Dependencies
 ------------
@@ -27,7 +27,7 @@ You must set up and configure VirtualBox.
 Example Playbook
 ----------------
 
-    - hosts: virtualbox
+    - hosts: virtualboxhosts
       roles:
          - { role: dnsmasq4vbox, dnsmasq_domain: vbox.example.com }
 
