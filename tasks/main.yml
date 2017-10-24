@@ -1,0 +1,29 @@
+---
+# tasks file for ansible-roles/dnsmasq4vbox
+
+  - name: install dnsmasq package
+    package: name=dnsmasq state=latest
+
+  - name: configure dnsmasq
+    template:
+    args:
+      src: templates/dnsmasq.conf.j2
+      dest: "{{ dnsmasq_conf_file }}"
+      group: wheel
+      mode: "u=rw,g=r,o=r"
+    become: true
+    notify:
+      - STOP launch daemon for dnsmasq
+      - START launch daemon for dnsmasq
+
+  - name: install dnsmasq config file for launchctl
+    copy:
+    args:
+      src: /usr/local/opt/dnsmasq/homebrew.mxcl.dnsmasq.plist
+      dest: /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+      remote_src: yes
+    become: yes
+    notify:
+      - LOAD launch daemon for dnsmasq
+
+

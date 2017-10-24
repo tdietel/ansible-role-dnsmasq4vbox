@@ -1,0 +1,15 @@
+---
+# handlers file for ansible-roles/dnsmasq4vbox
+  - name: LOAD launch daemon for dnsmasq
+    command: launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+    become: yes
+
+  - name: STOP launch daemon for dnsmasq
+    command: launchctl stop homebrew.mxcl.dnsmasq
+    become: yes
+
+  - name: START launch daemon for dnsmasq
+    command: launchctl start homebrew.mxcl.dnsmasq
+    become: yes
+
+
