@@ -11,7 +11,7 @@
       dest: "{{ dnsmasq_conf_file }}"
       group: wheel
       mode: "u=rw,g=r,o=r"
-    become: true
+    become: yes
     notify:
       - STOP launch daemon for dnsmasq
       - START launch daemon for dnsmasq
@@ -26,4 +26,8 @@
     notify:
       - LOAD launch daemon for dnsmasq
 
-
+  - name: configure macOS DNS resolver
+    copy:
+      dest: /etc/resolver/{{ dnsmasq_domain }}
+      content: nameserver {{ dnsmasq_nameserver }}
+    become: yes
